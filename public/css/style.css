@@ -1,0 +1,14 @@
+table{
+    border: 1px solid black;
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+thead, tr, td, tbody{
+    border: 1px solid black;
+    padding: 3px;
+    margin: 1px;
+    text-align: center;
+}
+
+
