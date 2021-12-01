@@ -51,9 +51,15 @@
         </tr>
         <tr>
             <td>GET</td>
+            <td>Get data about one selected movie title</td>
             <td>'/movies/:title'</td>
             <td>None</td>
-            <td>Get an array of a single movie data in JSON format, based on title entered in the URL parameter.</td>  
+            <td>Get an array of a single movie data in JSON format, based on title entered in the URL parameter.
+                <br/> title: 'Harry Potter and Sorcerer's Stone",
+                <br/> director: ['David Yates'],
+                <br/> genre: ['Adventure'],
+                <br/> ImagePath: 'www.adressToImage.com'
+            </td>  
         </tr>
         <tr>
             <td>GET</td>
@@ -87,8 +93,18 @@
             <td>POST</td>
             <td>Allow clients to add their favourite movies to their library</td>
             <td>'/clients/:clientsId/addFavourite'</td>
-            <td>An array of JSON data containing the added movie. Example: { title: 'Lupin', director: ['Louis Leterrier', 'Marcela Said'], genre: ['Crime', 'Thriller', 'Mystery', 'Drama'], releaseYear: 2021 } </td>
-            <td>An array of the added movie data in JSON format, with a text  confirming added data and an added ID. Example: { <b>id: 79,</b>  title: 'Lupin', director: ['Louis Leterrier', 'Marcela Said'], genre: ['Crime', 'Thriller', 'Mystery', 'Drama'], releaseYear: 2021 } </td>
+            <td>An array of JSON data containing the added movie. Example:
+                <br/> id: 1,
+                <br/> title: 'Harry Potter and Sorcerer's Stone",
+                <br/> director: ['David Yates'],
+                <br/> genre: ['Adventure'],
+                <br/> ImagePath: 'www.adressToImage.com' </td>
+            <td>An array of the added movie data in JSON format, with a text  confirming added data and an added ID. Example: { 
+                <br/> id: 1,
+                <br/> title: 'Harry Potter and Sorcerer's Stone",
+                <br/> director: ['David Yates'],
+                <br/> genre: ['Adventure'],
+                <br/> ImagePath: 'www.adressToImage.com' </td>
         </tr>
         <tr>
             <td>DELETE</td>
@@ -99,10 +115,10 @@
         </tr>
         <tr>
             <td>DELETE</td>
-            <td>Allow clients to terminate account</td>
+            <td>Allow clients to delete account</td>
             <td>'/clients'</td>
             <td>None</td>
-            <td>Returns a text confirming account termination</td>
+            <td>Returns a text confirming deleted account</td>
         </tr>
     </thead>
 </table>
