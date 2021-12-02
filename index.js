@@ -267,7 +267,42 @@ app.delete('/users/:Username', (req, res) => {
         console.error(err);
         res.status(500).send('Error: ' + err);
       });
-  });  
+  });
+
+  //Post favourite movie
+  app.post('/users/:username/movies/:Moviesid', (req, res) => {
+    Users.findOneAndUpdate({username: req.params.username}, 
+      {$push:{
+        favoriteMovies: req.params.Moviesid}
+      },
+      { new: true }, //Returns document
+      (err, favoriteMovies) => {
+        if (err){
+          console.error(err);
+          res.status(500).send('Error: ' + err);
+        }else{
+          res.json(favoriteMovies);
+        }
+      });
+    });
+    
+
+// Delete Favourite movie from user by username
+    app.delete('/users/:username/movies/:Moviesid', (req, res) => {
+    Users.findOneAndUpdate({username: req.params.username}, 
+      {$pull:{
+        favoriteMovies: req.params.Moviesid}
+      },
+      { new: true }, //Returns document
+      (err, removeFavorite) => {
+        if (err){
+          console.error(err);
+          res.status(500).send('Error: ' + err);
+        }else{
+          res.json(removeFavorite);
+        }
+      });
+    });
 
 // Created Error handler
 app.use((err, req, res, next) => {
