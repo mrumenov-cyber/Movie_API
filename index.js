@@ -236,22 +236,6 @@ app.put('/users/:Username', (req, res) => {
       }
     });
   });
-
-// Add a movie to a user's list of favorites
-app.post('/users/:Username/movies/:MovieID', (req, res) => {
-    Users.findOneAndUpdate({ Username: req.params.Username }, {
-       $push: { FavoriteMovies: req.params.MovieID }
-     },
-     { new: true }, // This line makes sure that the updated document is returned
-    (err, updatedUser) => {
-      if (err) {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
-      } else {
-        res.json(updatedUser);
-      }
-    });
-  });
   
  // Delete a user by username
 app.delete('/users/:Username', (req, res) => {
@@ -269,29 +253,28 @@ app.delete('/users/:Username', (req, res) => {
       });
   });
 
-  //Post favourite movie
-  app.post('/users/:username/movies/:Moviesid', (req, res) => {
-    Users.findOneAndUpdate({username: req.params.username}, 
-      {$push:{
-        favoriteMovies: req.params.Moviesid}
-      },
-      { new: true }, //Returns document
-      (err, favoriteMovies) => {
-        if (err){
-          console.error(err);
-          res.status(500).send('Error: ' + err);
-        }else{
-          res.json(favoriteMovies);
-        }
-      });
+    // Add a movie to a user's list of favorites
+app.post('/users/:Username/movies/:MovieID', (req, res) => {
+    Users.findOneAndUpdate({ Username: req.params.Username }, {
+       $push: { FavoriteMovies: req.params.MovieID }
+     },
+     { new: true }, // This line makes sure that the updated document is returned
+    (err, updatedUser) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+      } else {
+        res.json(updatedUser);
+      }
     });
+  });
     
 
 // Delete Favourite movie from user by username
-    app.delete('/users/:username/movies/:Moviesid', (req, res) => {
-    Users.findOneAndUpdate({username: req.params.username}, 
+    app.delete('/users/:Username/movies/:MoviesID', (req, res) => {
+    Users.findOneAndDelete({username: req.params.Username}, 
       {$pull:{
-        favoriteMovies: req.params.Moviesid}
+        favoriteMovies: req.params.MoviesID}
       },
       { new: true }, //Returns document
       (err, removeFavorite) => {
