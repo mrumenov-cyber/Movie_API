@@ -7,9 +7,14 @@ const express = require('express'),
   Models = require('./models.js'),
   passport = require('passport');
 
-const app = express();
+const app = express();//Encapsulated the express function with variable, app
 let auth = require('./auth')(app);
 require('./passport');
+// Midelware functions
+app.use(morgan('common')); // log all requests on terminal
+app.use(express.static('public')); // serve all static files in public folder
+app.use(bodyParser.json()); //get required json data from http request body inside req handlers using req.body
+
 const cors = require('cors');
 const { check, validationResult } = require('express-validator');
 
@@ -184,8 +189,19 @@ app.get('/movies/director/:name', passport.authenticate('jwt', { session: false 
       });
   });
   
+  //Get user by username
+app.get('/users/:Username', passport.authenticate ('jwt', {session: false}), (req, res) =>{
+    Users.findOne({username: req.params.Username})
+      .then((Users)=> {
+        res.status(201).json(Users);
+      })
+      .catch((err)=> {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+      });
+  });
 
-//Post users
+//Post users - Creating new user account
 app.post('/users',
 // Validation logic here for request
 //you can either use a chain of methods like .not().isEmpty()
@@ -299,7 +315,7 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
 
 // Delete Favourite movie from user by username
 app.delete('/users/:Username/movies/:MoviesID', passport.authenticate('jwt', { session: false }), (req, res) => {
-    Users.findOneAndDelete({username: req.params.Username}, 
+    Users.findOneAndRemove({username: req.params.Username}, 
       {$pull:{
         favoriteMovies: req.params.MoviesID}
       },

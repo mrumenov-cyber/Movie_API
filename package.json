@@ -22,7 +22,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npm init"
+    "test": "npm init",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,5 @@
   "bugs": {
     "url": "https://github.com/mrumenov-cyber/Movie_API/issues"
   },
-  "homepage": "https://github.com/mrumenov-cyber/Movie_API#readme",
-  "start": "node index.js"
+  "homepage": "https://github.com/mrumenov-cyber/Movie_API#readme"
 }
