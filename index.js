@@ -35,11 +35,17 @@ app.use(cors({
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect(
+//Connecting to local DB on a computer
+/*mongoose.connect(
     'mongodb://localhost:27017/myFlixDB', {
         useNewUrlParser: true, 
         useUnifiedTopology: true
-}); //linking REST API  to mongodb database
+});*/ //linking REST API  to mongodb database
+
+
+//Connecting to online database on Heroku
+mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 //Index page request/route
 app.get('/', (req, res) => {
