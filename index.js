@@ -36,15 +36,15 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 //Connecting to local DB on a computer
-/*mongoose.connect(
+mongoose.connect(
     'mongodb://localhost:27017/myFlixDB', {
         useNewUrlParser: true, 
         useUnifiedTopology: true
-});*/ //linking REST API  to mongodb database
+}); //linking REST API  to mongodb database
 
 
 //Connecting to online database on Heroku
-mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 //Index page request/route
@@ -58,85 +58,6 @@ app.get('/secreturl', (req, res) => {
 });
 
 // List of my movies, this is JSON object that carries movie data
-let topMovies = [
-    {
-        title: 'Harry Potter and the Sorcerer\'s Stone',
-        author: 'J:K: Rowling',
-        year: 2001,
-        director: ['David Yates', 'Alfonso Cuarón', 'Mike Newell', 'Chris Columbus'],
-        genre: ['Novel', 'Fantasy Fiction', 'Children\'s movie', 'Adventure']
-    },
-    {
-        title:'Harry Potter and the Chamber of Secrets',
-        author: 'J:K: Rowling',
-        year: 2002,
-        director: ['David Yates', 'Alfonso Cuarón', 'Mike Newell', 'Chris Columbus'],
-        genre: ['Novel', 'Fantasy Fiction', 'Children\'s movie', 'Adventure']
-    },
-    {
-        title:'Harry Potter and the Prisoner of Azkaban',
-        author: 'J:K: Rowling',
-        year: 2004,
-        director: ['David Yates', 'Alfonso Cuarón', 'Mike Newell', 'Chris Columbus'],
-        genre: ['Novel', 'Fantasy Fiction', 'Adventure']
-    },
-    {
-        title:'Harry Potter and the Goblet of Fire',
-        author: 'J:K: Rowling',
-        year: 2005,
-        director: ['David Yates', 'Alfonso Cuarón', 'Mike Newell', 'Chris Columbus'],
-        genre: ['Novel', 'Fantasy Fiction', 'Children\'s movie', 'Adventure']
-    },
-    {
-        title:'Harry Potter and the Order of the Phoneix',
-        author: 'J:K: Rowling',
-        year: 2007,
-        director: ['David Yates', 'Alfonso Cuarón', 'Mike Newell', 'Chris Columbus'],
-        genre: ['Novel', 'Fantasy Fiction', 'Children\'s movie', 'Adventure']
-    },
-    {
-        title:'Harry Potter and the Half-Blood Prince',
-        author: 'J:K: Rowling',
-        year: 2009,
-        director: ['David Yates', 'Alfonso Cuarón', 'Mike Newell', 'Chris Columbus'],
-        genre: ['Novel', 'Fantasy Fiction', 'Children\'s movie', 'Adventure']
-    },
-    {
-        title:'Harry Potter and the Deadly Hallows - Part 1',
-        author: 'J:K: Rowling',
-        year: 2010,
-        director: ['David Yates', 'Alfonso Cuarón', 'Mike Newell', 'Chris Columbus'],
-        genre: ['Novel', 'Fantasy Fiction', 'Children\'s movie', 'Adventure']
-    },
-    {
-        title:'Harry Potter and the Deadly Hallows - Part 2',
-        author: 'J:K: Rowling',
-        year: 2011,
-        director: ['David Yates', 'Alfonso Cuarón', 'Mike Newell', 'Chris Columbus'],
-        genre: ['Novel', 'Fantasy Fiction', 'Children\'s movie', 'Adventure']
-    },
-    {
-        title:'Fantastic Beasts and Where to Find them',
-        author: 'J:K: Rowling',
-        year: 2016,
-        director: 'David Yates',
-        genre: ['Novel', 'Fantasy Fiction', 'Children\'s movie', 'Adventure']
-    },
-    {
-        title:'Fantastic Beasts and Where to Find them and Grindelwaldov\'s Evil Deeds',
-        author: 'J:K: Rowling',
-        year: 2020,
-        director: 'David Yates',
-        genre: ['Novel', 'Fantasy Fiction', 'Children\'s movie', 'Adventure']
-    },
-    {
-        title:'Fantastic Beasts and Where to Find them and The Secrets of Dumbledore',
-        author: 'J:K: Rowling',
-        year: 2022,
-        director: 'David Yates',
-        genre: ['Novel', 'Fantasy Fiction', 'Children\'s movie', 'Adventure']
-    },
-]
 
 // Midelware functions
 app.use(morgan('common')); // log all requests on terminal
