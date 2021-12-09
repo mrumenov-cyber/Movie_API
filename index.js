@@ -36,16 +36,27 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 //Connecting to local DB on a computer
-mongoose.connect(
+/*mongoose.connect(
     'mongodb://localhost:27017/myFlixDB', {
         useNewUrlParser: true, 
         useUnifiedTopology: true
-}); //linking REST API  to mongodb database
+}); *///linking REST API  to mongodb database
 
 
 //Connecting to online database on Heroku
 //mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
+/*const { MongoClient } = require('mongodb');
+const uri = "mongodb+srv://mrumenov:MR250392mr!@cluster0.zwtgj.mongodb.net/myFlixDB?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});*/
+
+mongoose.connect('mongodb+srv://mrumenov:MR250392mr!@cluster0.zwtgj.mongodb.net/myFlixDB?retryWrites=true&w=majority', 
+{ useNewUrlParser: true, useUnifiedTopology: true });
 
 //Index page request/route
 app.get('/', (req, res) => {
