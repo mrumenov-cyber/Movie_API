@@ -5,6 +5,8 @@
 - node.js
 - express.js
 - mongoDB as Database
+- Heroku web server
+- mongoDB web server
 
 # Esential Features
 - Return a list of ALL movies to the user
