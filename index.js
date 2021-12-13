@@ -8,12 +8,15 @@ const express = require('express'),
   passport = require('passport');
 
 const app = express();//Encapsulated the express function with variable, app
-let auth = require('./auth')(app);
-require('./passport');
+
 // Midelware functions
 app.use(morgan('common')); // log all requests on terminal
 app.use(express.static('public')); // serve all static files in public folder
 app.use(bodyParser.json()); //get required json data from http request body inside req handlers using req.body
+
+app.use(passport.initialize());
+let auth = require('./auth')(app);
+require('./passport');
 
 const cors = require('cors');
 const { check, validationResult } = require('express-validator');
@@ -55,7 +58,8 @@ client.connect(err => {
   client.close();
 });*/
 
-mongoose.connect('mongodb+srv://mrumenov:MR250392mr!@cluster0.zwtgj.mongodb.net/myFlixDB?retryWrites=true&w=majority', 
+mongoose.connect(
+  'mongodb+srv://mrumenov:MR250392mr!@cluster0.zwtgj.mongodb.net/myFlixDB?retryWrites=true&w=majority', 
 { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Index page request/route
