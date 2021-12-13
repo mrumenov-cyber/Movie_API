@@ -254,17 +254,17 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
 
 // Delete Favourite movie from user by username
 app.delete('/users/:Username/movies/:MoviesID', passport.authenticate('jwt', { session: false }), (req, res) => {
-    Users.findOneAndRemove({username: req.params.Username}, 
+    Users.findOneAndRemove({Username: req.params.Username}, 
       {$pull:{
         FavouriteMovies: req.params.MoviesID}
       },
       { new: true }, //Returns document
-      (err, removeFavorite) => {
+      (err, removeFavourite) => {
         if (err){
           console.error(err);
           res.status(500).send('Error: ' + err);
         }else{
-          res.json(removeFavorite);
+          res.json(removeFavourite);
         }
       });
     });
