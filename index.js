@@ -254,7 +254,7 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
 
 // Delete Favourite movie from user by username
 app.delete('/users/:Username/movies/:MoviesID', passport.authenticate('jwt', { session: false }), (req, res) => {
-    Users.findOneAndRemove({Username: req.params.Username}, 
+    Users.findOneAndUpdate({Username: req.params.Username}, 
       {$pull:{
         FavouriteMovies: req.params.MoviesID}
       },
