@@ -59,7 +59,7 @@ client.connect(err => {
 });*/
 
 mongoose.connect(
-  'mongodb+srv://mrumenov:MR250392mr!@cluster0.zwtgj.mongodb.net/myFlixDB?retryWrites=true&w=majority', 
+  'mongodb+srv://mrumenov:MR250392@cluster0.zwtgj.mongodb.net/myFlixDB?retryWrites=true&w=majority', 
 { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Index page request/route
@@ -133,7 +133,7 @@ app.get('/movies/director/:name', passport.authenticate('jwt', { session: false 
   
   //Get user by username
 app.get('/users/:Username', passport.authenticate ('jwt', {session: false}), (req, res) =>{
-    Users.findOne({username: req.params.Username})
+    Users.findOne({Username: req.params.Username})
       .then((Users)=> {
         res.status(201).json(Users);
       })
