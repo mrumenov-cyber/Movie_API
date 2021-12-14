@@ -21,7 +21,7 @@ require('./passport');
 const cors = require('cors');
 const { check, validationResult } = require('express-validator');
 
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
+let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234'];
 app.use(cors({
     origin: (origin, callback) => {
       if(!origin) return callback(null, true);
