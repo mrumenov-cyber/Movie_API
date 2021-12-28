@@ -49,14 +49,6 @@ const Users = Models.User;
 //Connecting to online database on Heroku
 //mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-/*const { MongoClient } = require('mongodb');
-const uri = "mongodb+srv://mrumenov:MR250392mr!@cluster0.zwtgj.mongodb.net/myFlixDB?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});*/
 
 mongoose.connect(
   'mongodb+srv://mrumenov:MR250392@cluster0.zwtgj.mongodb.net/myFlixDB?retryWrites=true&w=majority', 
@@ -88,7 +80,7 @@ app.get('/documentations', (req, res) => {
 });
 
 //Get movies request/route
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
     Movies.find()
       .then((movies) => {
         res.status(201).json(movies);
