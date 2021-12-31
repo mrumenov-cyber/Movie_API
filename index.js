@@ -14,10 +14,6 @@ app.use(morgan('common')); // log all requests on terminal
 app.use(express.static('public')); // serve all static files in public folder
 app.use(bodyParser.json()); //get required json data from http request body inside req handlers using req.body
 
-app.use(passport.initialize());
-let auth = require('./auth')(app);
-require('./passport');
-
 const cors = require('cors');
 const { check, validationResult } = require('express-validator');
 
@@ -33,6 +29,9 @@ app.use(cors({
     }
   }));
 
+app.use(passport.initialize());
+let auth = require('./auth')(app);
+require('./passport');
 
  //Encapsulated the express function with variable, app.
 const Movies = Models.Movie;
