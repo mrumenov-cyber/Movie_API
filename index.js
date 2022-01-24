@@ -74,7 +74,7 @@ app.use(bodyParser.json()); //get required json data from http request body insi
 //GET requests
 
 //Get documentation request/route
-app.get('/documentations', (req, res) => {
+app.get('/documentation', (req, res) => {
     res.sendFile('public/documentation.html', {root: __dirname});
 });
 
