@@ -17,7 +17,7 @@ app.use(bodyParser.json()); //get required json data from http request body insi
 const cors = require('cors');
 const { check, validationResult } = require('express-validator');
 
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234'];
+let allowedOrigins = ['http://localhost:8080', 'https://61ee9faccd231b0007ac0579--suspicious-johnson-560d0e.netlify.app/', 'http://localhost:1234'];
 app.use(cors({
     origin: (origin, callback) => {
       if(!origin) return callback(null, true);
