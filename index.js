@@ -29,7 +29,7 @@ app.use(cors({
     }
   }));*/
 
-  app.use(cors());
+app.use(cors());
 
 app.use(passport.initialize());
 let auth = require('./auth')(app);
